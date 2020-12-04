@@ -4,6 +4,9 @@ VSC Python iRODS Client (VSC-PRC)
 
 `Documentation on ReadTheDocs`_
 
+Description
+============
+
 Welcome to the Vlaams Supercomputing Centrum (VSC_) extensions to the
 Python iRODS Client (PRC_)!
 
