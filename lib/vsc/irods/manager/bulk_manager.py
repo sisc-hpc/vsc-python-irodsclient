@@ -6,7 +6,7 @@ from irods.exception import (CollectionDoesNotExist, OperationNotSupported,
 from irods.keywords import FORCE_FLAG_KW
 from irods.meta import iRODSMeta
 from irods.models import Collection, DataObject
-from vsc_irods.manager import Manager
+from vsc.irods.manager import Manager
 
 
 # Job-related environment variables used by add_job_metadata

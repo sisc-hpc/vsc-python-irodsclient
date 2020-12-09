@@ -1,5 +1,5 @@
 import os
-from vsc_irods.manager import Manager
+from vsc.irods.manager import Manager
 
 
 class PathManager(Manager):

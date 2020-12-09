@@ -1,4 +1,4 @@
-.. module:: vsc_irods.manager.path_manager
+.. module:: vsc.irods.manager.path_manager
 
 ==========================
 PathManager (session.path)

@@ -1,4 +1,4 @@
-.. module:: vsc_irods.session
+.. module:: vsc.irods.session
 
 ===============
 VSCiRODSSession

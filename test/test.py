@@ -7,7 +7,7 @@ inside your iRODS home.
 import os
 import fnmatch
 import tempfile
-from vsc_irods.session import VSCiRODSSession
+from vsc.irods.session import VSCiRODSSession
 
 
 def create_tmpdir(session, tmpdir):
@@ -306,7 +306,7 @@ def test_metadata(session, tmpdir):
 def test_add_job_metadata(session, tmpdir):
     create_tmpdir(session, tmpdir)
 
-    from vsc_irods.manager.bulk_manager import job_env_var
+    from vsc.irods.manager.bulk_manager import job_env_var
 
     # Create 'output' file
     f = os.path.join(tmpdir, 'outputfile.txt')

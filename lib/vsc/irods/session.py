@@ -2,9 +2,9 @@ import os
 import sys
 import ssl
 from irods.session import iRODSSession
-from vsc_irods.manager.path_manager import PathManager
-from vsc_irods.manager.search_manager import SearchManager
-from vsc_irods.manager.bulk_manager import BulkManager
+from vsc.irods.manager.path_manager import PathManager
+from vsc.irods.manager.search_manager import SearchManager
+from vsc.irods.manager.bulk_manager import BulkManager
 
 
 class VSCiRODSSession(iRODSSession):
@@ -23,9 +23,9 @@ class VSCiRODSSession(iRODSSession):
 
     	The initial iRODS current working directory is set
     	to the user's iRODS "home" directory
-    	(see :func:`vsc_irods.manager.path_manager.PathManager.get_irods_home`)
+    	(see :func:`vsc.irods.manager.path_manager.PathManager.get_irods_home`)
     	This can be changed with
-        :func:`vsc_irods.manager.path_manager.PathManager.ichdir`.
+        :func:`vsc.irods.manager.path_manager.PathManager.ichdir`.
 
     Arguments:
 

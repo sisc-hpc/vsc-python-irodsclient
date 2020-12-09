@@ -1,3 +1,6 @@
+import pkg_resources
+pkg_resources.declare_namespace(__name__)
+
 class Manager:
     """ Base class for 'managers' that are attached to a VSCiRODSSession """
 

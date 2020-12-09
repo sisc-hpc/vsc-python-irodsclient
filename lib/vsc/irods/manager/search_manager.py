@@ -4,7 +4,7 @@ import warnings
 import itertools
 from irods.column import Criterion
 from irods.models import Collection, CollectionMeta, DataObject, DataObjectMeta
-from vsc_irods.manager import Manager
+from vsc.irods.manager import Manager
 
 
 class SearchManager(Manager):

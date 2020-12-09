@@ -15,7 +15,7 @@ using iRODS_, in particular on VSC's high performance computing infrastructure.
 
 To this end, VSC-PRC offers a Python module and associated command line scripts:
 
-* The :code:`vsc_irods` Python module contains a :code:`VSCiRODSSession` class
+* The :code:`vsc.irods` Python module contains a :code:`VSCiRODSSession` class
   which represents an extension of the corresponding :code:`iRODSSession` class
   in PRC.
 
@@ -27,7 +27,7 @@ To this end, VSC-PRC offers a Python module and associated command line scripts:
 
   .. code:: python
 
-    >>> from vsc_irods.session import VSCiRODSSession
+    >>> from vsc.irods.session import VSCiRODSSession
     >>>
     >>> with VSCiRODSSession() as session:
     >>>     session.bulk.get('~/my_irods_collection/*.txt', local_path='.')
