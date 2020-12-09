@@ -1,3 +1,15 @@
-*.pyc
+*~
+*.py[cod]
 .ipynb_checkpoints
 docs/_build
+
+# Distribution / packaging
+build/
+dist/
+sdist/
+.eggs
+.eggs*
+*.egg-info/
+.installed.cfg
+*.egg
+
