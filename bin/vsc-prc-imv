@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
-from vsc_irods.session import VSCiRODSSession
+from vsc.irods.session import VSCiRODSSession
 
 
 desc = """imv-like command using the VSC Python iRODS client for moving

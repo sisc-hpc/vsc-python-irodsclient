@@ -1,36 +1,39 @@
 #!/usr/bin/env python
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
-from vsc_irods.session import VSCiRODSSession
+from vsc.irods.session import VSCiRODSSession
 
 
-desc = """iput-like command using the VSC Python iRODS client
+desc = """iget-like command using the VSC Python iRODS client
 
 Example:
 
-vsc-prc-iput -r ./test/data* --destination="~/" --verbose
+vsc-prc-iget -r ./data/molecules/ -d . --verbose
 """
 
 arg_parser = ArgumentParser(description=desc,
                             formatter_class=RawDescriptionHelpFormatter)
 
 arg_parser.add_argument('args', nargs='*',
-                        help='glob pattern for local files and directories '
-                        'to be copied to iRODS.')
+                        help='glob pattern(s) for iRODS collections and data '
+                        'objects to be copied to the local file system. '
+                        'Note that, when including asterisks or a tilde in '
+                        'in a pattern, the pattern needs to be enclosed in '
+                        'quotes to avoid shell expansion to local paths.')
 
 arg_parser.add_argument('-d', '--destination', default='.',
-                        help='The destination path on the iRODS file system. '
-                        'Default: irods_cwd, as defined in environments.json.')
+                        help='The destination path on the local file system. '
+                        'Defaults to the current working directory.')
 
 arg_parser.add_argument('-r', '--recurse', action='store_true',
                         help='Turns on recursion.')
 
 arg_parser.add_argument('-n', '--no-clobber', action='store_true',
-                        help='Do not overwrite existing data objects. '
+                        help='Do not overwrite existing local files. '
                         'If enabled, such transfers will be skipped.')
 
 arg_parser.add_argument('-i', '--interactive', action='store_true',
                         help='Switch to an "interactive" mode where you will '
-                        'be asked before overwriting existing data objects. '
+                        'be asked before overwriting existing local files. '
                         'If enabled, the "--no-clobber" option is ignored.')
 
 arg_parser.add_argument('-v', '--verbose', action='store_true',
@@ -41,7 +44,7 @@ options = arg_parser.parse_args()
 
 with VSCiRODSSession(txt='-') as session:
     for arg in options.args:
-        session.bulk.put(arg, irods_path=options.destination,
+        session.bulk.get(arg, local_path=options.destination,
                          recurse=options.recurse,
                          clobber=not options.no_clobber,
                          interactive=options.interactive,

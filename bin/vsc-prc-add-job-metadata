@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
-from vsc_irods.session import VSCiRODSSession
+from vsc.irods.session import VSCiRODSSession
 
 
-desc = """irm-like command using the VSC Python iRODS client
+desc = """Add job-related metadata to selected data objects and collections
 
-Example:
+Can only be used as part of a job sent to a PBS- or SLURM-based scheduler
 
-vsc-prc-irm -r "~/data/molec*" "~/data/README" --interactive --verbose
+Examples:
+
+vsc-prc-add-job-metadata "~/data/*.out"
 """
 
 arg_parser = ArgumentParser(description=desc,
@@ -15,20 +17,13 @@ arg_parser = ArgumentParser(description=desc,
 
 arg_parser.add_argument('args', nargs='*',
                         help='glob pattern(s) for iRODS collections and data '
-                        'objects to be removed. '
+                        'objects to which job-related metadata will be added. '
                         'Note that, when including asterisks or a tilde in '
                         'in a pattern, the pattern needs to be enclosed in '
                         'quotes to avoid shell expansion to local paths.')
 
 arg_parser.add_argument('-r', '--recurse', action='store_true',
                         help='Turns on recursion.')
-
-arg_parser.add_argument('-f', '--force', action='store_true',
-                        help='Complete removal, instead of sending to trash.')
-
-arg_parser.add_argument('-i', '--interactive', action='store_true',
-                        help='Switch to an "interactive" mode where you will '
-                        'be asked for confirmation before any removal.')
 
 arg_parser.add_argument('-v', '--verbose', action='store_true',
                         help='Increases the verbosity level.')
@@ -38,7 +33,5 @@ options = arg_parser.parse_args()
 
 with VSCiRODSSession(txt='-') as session:
     for arg in options.args:
-        session.bulk.remove(arg, recurse=options.recurse,
-                            force=options.force,
-                            interactive=options.interactive,
-                            verbose=options.verbose)
+        session.bulk.add_job_metadata(arg, recurse=options.recurse,
+                                      verbose=options.verbose)
